@@ -1,0 +1,15 @@
+; -*- scheme -*-
+  
+
+(module Main
+  (define other ()
+    ;run (print "asdf")
+    return 4
+    )
+  
+  (define main IO ()    
+    run (print "hello")
+    run (. putStr show ("zxcv"))
+    run (. putStr show (+ 0.345 3.234))
+    return (return "hello")
+    ))

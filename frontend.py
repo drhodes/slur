@@ -27,13 +27,13 @@ def pretty(pt, depth=0):
         pretty(pt.what, depth+1)
 
 tree = parsetree()[0] 
-#pretty(tree)
 
 def tbl(x):
     tmp = {\
         "assign": assign,
         "block": block,
         "dot": dot,
+        "run": run,
         "dubstring": dubstring,
         "expr": expr,
         "expr": expr,
@@ -93,7 +93,12 @@ class Node(object):
 
     def cls_name(self):
         return self.__class__.__name__
-                
+
+    def error(self, msg):
+        print "slur: Error @ %s" % self.line
+        print msg
+        sys.exit()
+
     def __repr__(self):
         args = ", ".join(map(str, self.args))
         return "(%s %s)" % (self.cls_name(), str(args))
@@ -165,6 +170,13 @@ class dot(Node):
     def __init__(self, *args):
         Node.__init__(self, args)
 
+class run(Node):
+    def __init__(self, *args):
+        Node.__init__(self, args)
+
+    def __repr__(self):
+        return str(self.args[0][0])
+
 class ident(Node):
     def __init__(self, *args):
         Node.__init__(self, args)
@@ -215,6 +227,9 @@ class block(Node):
     def show_pure(self, kind):
         temp = " where {"
         for stmt in self.args[0]:
+            if stmt.isRun():
+                self.error("Can't run IO in pure functions")            
+                
             temp += " ; %s" % stmt.show(kind)
         temp += "}"
         return temp      
@@ -224,11 +239,12 @@ class block(Node):
         for stmt in self.args[0]:
             if stmt == self.args[0][-1]:
                 temp += "\n ; " + stmt.show_last_io()
+            elif stmt.isUnwrap():
+                temp += "\n ; %s" % stmt.show(kind)
+            elif stmt.isRun():
+                temp += "\n ; %s" % stmt.show("IO")
             else:
-                if stmt.isUnwrap():
-                    temp += "\n ; %s" % stmt.show(kind)
-                else:
-                    temp += "\n ; let %s" % stmt.show(kind)
+                temp += "\n ; let %s" % stmt.show(kind)
 
         temp += "\n}\n"
         return temp      
@@ -267,8 +283,7 @@ class method_pure(Node):
         blk = a[0][2]
         result = temp % (a[0][0], a[0][1], blk.show("pure"))
         return result
-
-           
+          
 class assign(Node):
     def __init__(self, *args):
         Node.__init__(self, args)
@@ -307,6 +322,9 @@ class stmt(Node):
     
     def isReturn(self):
         return self.args[0][0].cls_name() == "returnstmt"
+
+    def isRun(self):
+        return self.args[0][0].cls_name() == "run"
 
     def isUnwrap(self):
         return self.args[0][0].cls_name() == "unwrap"

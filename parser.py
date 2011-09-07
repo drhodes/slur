@@ -39,11 +39,11 @@ def method_io():        return ( "(", "define", [lowername, operator], "IO",
                                  "(", parameterlist, ")", block, ")" )
 
 def method():           return [method_pure, method_io]
-
+def run():              return "run", expr
 def assign():           return ident, "=", expr
 def unwrap():           return ident, "<-", expr
 def returnstmt():       return "return", expr
-def stmt():             return [assign, returnstmt, rawstring, method, unwrap]
+def stmt():             return [assign, returnstmt, rawstring, method, unwrap, run]
 def expr1():            return "(", oneormore(expr), ")"
 def expr():             return [literal, ident, expr1, listsugar, mapsugar, method, operator]
 def listsugar():        return "[", 0, commalist(expr), "]"
