@@ -1,0 +1,14 @@
+// -*- go-mode -*-
+
+module switch_example {		
+  class Switch(on, off){
+	def main() {
+      return switch(on) {
+		case true: "The switch is on";
+        case false: "The switch is off";            
+        default: "The switch isn't defined";
+      }
+	}
+  }
+}
+

@@ -1,0 +1,44 @@
+module example {
+  /* an example module for something
+     and something but that's that.
+  */
+  class Example(){
+    def square ( longArgumentName1 ){
+      asdf = 234;
+      alphabet = "abc...xyz";
+      
+      temp = { foo: {bar: "baz"},
+               fiz: {bam: "boz"}
+      };
+    }
+  }
+ 
+  class Int(n){    
+    def init(){
+      return asdf;      
+    }
+
+    def __pow__(){
+      map(f, xs);
+      asdf = 234;
+      alphabet = "abc...xyz";
+      temp = fn(x,y){ temp=345; };
+			
+      temp = map( fn(x){ mul(x,x); }, xs);
+      val = add(1, ab(1, 2));
+			
+      [1,2,3,4, [1,2,3]];
+    }
+
+    def fact() {           
+      if (self.eq(0)) {
+        Int(1);
+      } else {
+        temp(@n);
+      };
+      
+    }   	
+  } // end example.
+}
+
+

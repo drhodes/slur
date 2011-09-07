@@ -1,0 +1,53 @@
+(module geometry
+
+  ;;-----------------------------------------------------------------------------
+  (class Point (Point x y z)
+    (define foo (Bar x y z, Baz a a) ;
+      tmp1 = 234
+      tmp2 = (if x y z) ; if is an expression.      
+      tmp3 = asdf
+      )
+
+    (define == (Point x y z)
+      return (and [(== x @x),
+                   (== y @y),
+                   (== z @z),
+                   ]))
+    
+    (define temp(x)
+      temp = x
+      return x
+      )
+
+    
+    (define sub (p1)            
+      tmp1 = asdf
+      tmp2 = [1,2,3,4]
+      temp = {(key1 [12.34, 2, 3])
+              (key2 asdf)
+              (object1 asdf) ; so long object1 has 
+              (key3 zxcv)
+              }
+      
+      temp = (define inner1 (Point x y z)
+               tmp3 = asdf
+               tmp4 = (asdf)
+               temp = (define inner2 (Point x y z)
+                        tmp3 = (asdF)
+                        tmp4 = (asdf)                              
+                        ))
+
+      _ = (print "Hello")
+      _ = (print "secondline")
+      
+      tmp3 = [foo, bar, baz]
+      )
+    
+    (define foo (Point help)
+      return (* math.pi (* r r)))
+    ))
+
+
+(module math
+  pi = 3.14159 ; constant
+  )

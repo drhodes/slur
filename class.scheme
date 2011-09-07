@@ -1,0 +1,33 @@
+(module asdf  
+  (class Point (Point x y z)
+    (def foo (Bar x y z, Baz a a)
+         tmp1 = 234
+         tmp2 = (if x y z)
+         tmp3 = asdf)
+             
+    (def sub (Point x y z)
+         tmp1 = (asdf)
+         tmp2 = [1,2,3,4]
+         temp = {(asdf asdf)
+                 (zxcv zxcv)
+                 (zxdf asdf)
+                 (sadf asdf)}
+         
+         temp = (def inner1 (Point x y z)
+                     tmp3 = (asdF)
+                     tmp4 = (asdf)
+                     temp = (def inner2 (Point x y z)
+                                 tmp3 = (asdF)
+                                 tmp4 = (asdf)                     
+                                 )                     
+                     )
+         
+         tmp3 = [foo, bar, baz]
+         return (asdf)
+         )
+    
+    (def foo (Point help)
+         return (if (cond)))        
+    )
+  )
+

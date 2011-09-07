@@ -1,0 +1,35 @@
+# -*- sh -*-
+
+tmpfile=./__tmpfile__trash
+
+
+python -c "" 2> /dev/null 1> /dev/null
+
+if [ $? -gt 0 ]; then
+    echo "couldn't find python"
+	exit
+fi
+
+python -c "print 'check'" 2> /dev/null 1> /dev/null
+
+if [ $? -gt 0 ]; then
+    echo "python 3 is not yet supported"
+	exit
+fi
+
+echo "pass: python"
+
+ghc --version > $tmpfile
+
+if [ $? -gt 0 ]; then
+	echo "couldn't find ghc."
+	exit
+fi
+
+echo "pass: ghc"
+echo "ok."
+
+
+
+rm $tmpfile
+

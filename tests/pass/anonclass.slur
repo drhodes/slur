@@ -1,0 +1,10 @@
+module anonclass {
+  class Named() {
+    def foo() {
+      // an anonymous class can be made like so:
+      tmp = fn (a,b,c){
+      };     
+    }
+  }
+}
+

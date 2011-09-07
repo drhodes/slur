@@ -1,0 +1,34 @@
+class Element(el) {}
+
+class Trans(e1, e2) {}
+
+class Graph(trans) {
+    def append(t) {
+        idx = (+ 1 (maximum $ map fst trans))
+	    tmp = (Graph ((idx, t):xs))
+		return tmp;
+	}
+}
+
+class Point(x, y, z) {
+	def add(Point(x1, y1, z1)) {
+		return Point(x+x1, y+y1, z+z1);		
+	}	
+
+}
+
+def max(x, y) {	
+	return (if (> x y) x y)
+}
+
+def max2(x, y) {
+	return if x > y 
+	       then 
+           else y;
+}
+
+def main(x, y) {
+	tmp = x + y;	
+	
+}
+

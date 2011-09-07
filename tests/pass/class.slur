@@ -1,0 +1,37 @@
+module geometry {
+  class Point (x,y,z){
+    def add( Point x y z, Point x2 y2 z2 ){
+      return asdf;
+    }
+
+    def subtract( Point a b c, Point x y z ) {
+      return Point (a-x, b-y, x-z);
+    }
+  }
+}
+
+/*
+
+module geometry where
+
+data Point = Point { point_arg1 :: AllyT
+                   , point_arg2 :: AllyT
+                   , poitn_arg3 :: AllyT
+                   }
+
+point_add arg1 arg2 = result
+where
+  x = 
+
+
+
+
+
+
+
+
+
+
+
+
+*/

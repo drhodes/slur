@@ -1,0 +1,67 @@
+;; -*- scheme -*-
+
+(module Main
+  (define cube(x)
+    temp = (+ x 1)
+    temp4 = 34
+    return (* x (square (+ temp temp4))))
+
+  (define square(x)
+    return (* x x))
+
+  (define addN(n)
+    return (+ n)) ; partial application for free!
+  
+  (define addTo(f, val)    
+    return (f val))
+
+  (define outer(a)    
+    (define inner1(b) 
+      (define inner2(c)
+        return (+ c 1))
+      return (inner2 b))
+    return (inner1 a))
+  
+  (define fact (n)
+    return (if (== n 0)
+               then 1
+               else (* n $ fact (- n 1))))
+
+  (define is_one (n) return (== n 1))
+  
+  (define main IO ()
+    x = 42
+    temp = (if (== x 42)
+               then (let | a = 2
+                         | b = 3
+                         | c = 5
+                         in (+ (+ a b) c))
+               
+               else (case x of
+                          | 1 -> "January"
+                          | 2 -> "Febuary"
+                          | _ -> "Hello"
+                          ))
+    list1 = (repeat 4)
+    
+    tmp = (case 3 of
+                | 1 -> (\x -> (+ x 1))
+                | 3 -> (case 3 of
+                             | 1 -> (\x -> temp)
+                             | 3 -> (\x -> temp))
+                | 2 -> (\x -> "A"))
+    
+    t = (tmp 1)
+    wrap = (return "value")
+    
+    unwrap <- wrap    
+    temp = (return unwrap)
+    
+    hi = (let | a = "a"
+              | b = 5
+              in (+ a b)
+              )    
+    )
+  
+  
+  ); end basic module
