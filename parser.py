@@ -21,7 +21,6 @@ def literal():          return re.compile(r'\d*\.\d*|\d+|".*?"')
 def symbol():           return re.compile(r"\w+")
 def lowername():        return re.compile(r'[a-z|_|-]\w+')
 def uppername():        return re.compile(r'[A-Z]\w+')
-#def operator():         return oneormore(list("|!@#$%^&*<>=+-"))
 def operator():         return oneormore(re.compile(r'\+|\-|\@|\#|\$|\%|\^|\&|\*|\<|\>|\=|\||\{|\}|\\'))
 def name():             return [uppername, lowername]
 def dot():              return re.compile(r"\.")
@@ -37,7 +36,6 @@ def method_pure():      return ( "(", "define", [lowername, operator],
                                  "(", parameterlist, ")", block, ")" )
 def method_io():        return ( "(", "define", [lowername, operator], "IO",
                                  "(", parameterlist, ")", block, ")" )
-
 def method():           return [method_pure, method_io]
 def run():              return "run", expr
 def assign():           return ident, "=", expr
@@ -65,7 +63,3 @@ def parsetree():
                   comment,
                   lineCount = True,
                   )
-
-
-
-

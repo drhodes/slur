@@ -1,0 +1,26 @@
+;; -*- scheme -*-
+
+(module Main
+  (define fact(n)
+    return (case n of
+                 | 0 -> 1
+                 | _ -> (* n (fact (- n 1)))
+                 ))
+
+  (define what(n)
+    return (zip n n))
+
+  
+  (define main IO ()
+    ;run (print (sum [1,2,3,4]))
+    run (print (what [1,2,3]))
+    run (print (zip [1,2,3]
+                    [1,2,3]))
+    
+    run (print (fact 4))
+    run (print "hello")
+    run (. putStr show ("asdf"))
+    run (. putStr show (+ 0.345 3.234))
+    
+    temp = 1
+    ))

@@ -6,10 +6,15 @@
     ;run (print "asdf")
     return 4
     )
+
+  (define prt(n)
+    return (print n))
   
-  (define main IO ()    
+  (define main IO ()
+    run (prt 3)
     run (print "hello")
-    run (. putStr show ("zxcv"))
+    run (. putStr show ("asdf"))
     run (. putStr show (+ 0.345 3.234))
-    return (return "hello")
+    temp = 345
+    ;return (return "hello")
     ))

@@ -355,6 +355,8 @@ class expr(Node):
 class listsugar(Node):
     def __init__(self, *args):
         Node.__init__(self, args)
+    def __repr__(self):
+        return str(self.args[0])
 
 class mapsugar(Node):
     def __init__(self, *args):
