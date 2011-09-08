@@ -174,6 +174,9 @@ class run(Node):
     def __init__(self, *args):
         Node.__init__(self, args)
 
+    def show_last_io(self):
+        return str(self)
+
     def __repr__(self):
         return str(self.args[0][0])
 
@@ -356,7 +359,8 @@ class listsugar(Node):
     def __init__(self, *args):
         Node.__init__(self, args)
     def __repr__(self):
-        return str(self.args[0])
+        temp = "(SList %s)"
+        return temp % str(self.args[0])
 
 class mapsugar(Node):
     def __init__(self, *args):
@@ -369,6 +373,8 @@ class module(Node):
     def __repr__(self):
         temp = "{-# LANGUAGE NoMonomorphismRestriction #-}\n"
         temp += "module %s where\n" % self.name
+        #temp += "import Data.List\n"
+        temp += "import qualified Prelude as P\n"
         temp += "import Debug.Trace\n"
         temp += "import SlurTypes\n"
         temp += "\n\n"

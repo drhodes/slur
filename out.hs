@@ -1,21 +1,21 @@
 {-# LANGUAGE NoMonomorphismRestriction #-}
 module Main where
+import qualified Prelude as P
 import Debug.Trace
 import SlurTypes
 
 
 
-fact n = __result__  where { ; __result__ =  (case  n  of  ;  (SInt 0)  ->  (SInt 1)  ;  _  ->   (__mul__  n   (fact   (__sub__  n  (SInt 1) ) ) ) ) }
+foldr f z xs = __result__  where { ; __result__ =  (case  xs  of  ;  (SList [])  ->  z  ;  _  ->   (f   (head  xs )   (foldr  f  z   (tail  xs ) ) ) ) }
 
-what n = __result__  where { ; __result__ =  (zip  n  n ) }
+concat xs = __result__  where { ; __result__ =  (foldr   (++ )  (SList [])  xs ) }
 
 main  = do { 
- ;  (print   (what  [(SInt 1) , (SInt 2) , (SInt 3) ] ) ) 
- ;  (print   (zip  [(SInt 1) , (SInt 2) , (SInt 3) ]  [(SInt 1) , (SInt 2) , (SInt 3) ] ) ) 
- ;  (print   (fact  (SInt 4) ) ) 
- ;  (print  (SString "hello") ) 
- ;  (compose  putStr  show   ((SString "asdf") ) ) 
- ;  (compose  putStr  show   (__add__  (SFloat 0.345)  (SFloat 3.234) ) ) 
- ; return (SInt 1) 
+ ;  (print   ( (zip  (SList [(SInt 1) , (SInt 2) , (SInt 3) ])  (SList [(SInt 1) , (SInt 2) , (SInt 3) ]) ) ) ) 
+ ;  (print   ( (foldr   (__add__ )  (SInt 100)  (SList [(SInt 1) , (SInt 2) , (SInt 3) , (SInt 4) ]) ) ) ) 
+ ;  (print   (typeof  (SInt 1) ) ) 
+ ;  (print   (length  (SList [(SInt 1) , (SInt 2) , (SInt 3) ]) ) ) 
+ ;  (print   (concat  (SList [(SList [(SInt 1) , (SInt 2) ]) , (SList [(SInt 3) , (SInt 4) ]) , (SList [(SInt 1) , (SList [(SInt 2) , (SInt 3) ]) , (SInt 4) ]) ]) ) ) 
+ ;  (print  (SString "done") ) 
 }
 

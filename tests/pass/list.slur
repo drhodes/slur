@@ -1,26 +1,24 @@
 ;; -*- scheme -*-
 
 (module Main
-  (define fact(n)
-    return (case n of
-                 | 0 -> 1
-                 | _ -> (* n (fact (- n 1)))
-                 ))
-
-  (define what(n)
-    return (zip n n))
-
+  (define foldr (f, z, xs)
+    return (case xs of
+                 | [] -> z
+                 | _  -> (f (head xs)
+                            (foldr f z (tail xs)))))
   
+  (define concat (xs)
+    return (foldr (++) [] xs))
+      
   (define main IO ()
-    ;run (print (sum [1,2,3,4]))
-    run (print (what [1,2,3]))
-    run (print (zip [1,2,3]
-                    [1,2,3]))
-    
-    run (print (fact 4))
-    run (print "hello")
-    run (. putStr show ("asdf"))
-    run (. putStr show (+ 0.345 3.234))
-    
-    temp = 1
-    ))
+    ;;run (print (sum [1,2,3,4]))    
+    run (print ((zip [1,2,3]
+                     [1,2,3])))    
+
+    run (print ((foldr (+) 100 [1,2,3,4])))
+    run (print (typeof 1))
+    run (print (length [1,2,3]))
+    run (print (concat [[1,2], [3,4], [1,[2,3],4]]))
+    run (print "done")
+    )
+  )
