@@ -1,24 +1,54 @@
 ;; -*- scheme -*-
 
 (module Main
+  ;; ------------------------------------------------------------------
   (define foldr (f, z, xs)
     return (case xs of
                  | [] -> z
                  | _  -> (f (head xs)
                             (foldr f z (tail xs)))))
   
+  ;; ------------------------------------------------------------------
   (define concat (xs)
     return (foldr (++) [] xs))
-      
-  (define main IO ()
-    ;;run (print (sum [1,2,3,4]))    
-    run (print ((zip [1,2,3]
-                     [1,2,3])))    
 
-    run (print ((foldr (+) 100 [1,2,3,4])))
-    run (print (typeof 1))
-    run (print (length [1,2,3]))
-    run (print (concat [[1,2], [3,4], [1,[2,3],4]]))
-    run (print "done")
+  ;; ------------------------------------------------------------------
+  (define sum (xs)
+    return (foldr (+) 0 xs))      
+
+  ;; ------------------------------------------------------------------
+  (define map (f, xs)
+    return (case xs of
+                 | [] -> []
+                 | _  -> (: (. f head xs)
+                            (map f (tail xs)))
+                 ))
+
+  ;; ------------------------------------------------------------------  
+  (define order ()
+    ;; the order doesn't matter.
+    return tmp4
+
+    tmp1 = 512
+    tmp2 = 2
+    tmp3 = (+ tmp1 tmp2)
+    tmp4 = (* tmp2 tmp3)    
+    )
+  
+  (define main IO ()
+    ! (print (sum [1,2,3,4]))    
+    ! (print ((zip [1,2,3]
+                   [1,2,3])))
+
+    evens = (map (* 2) [1,2,3])
+    odds = (map (+ (negate 1)) evens)
+    ! (print (order))
+    ! (print (zip evens odds))    
+    ! (print (sum [1,2,3,4,45.45]))    
+    ! (print ((foldr (+) 100 [1,2,3,4])))
+    ! (print (typeof 1))
+    ! (print (length [1,2,3]))
+    ! (print (concat [[1,2], [3,4], [1,[2,3],4]]))
+    ! (print "done")
     )
   )

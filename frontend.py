@@ -117,7 +117,7 @@ class literal(Node):
     def __repr__(self):
         lit = self.args[0]
         if lit == ".":
-            return "compose"        
+            return "compose"
         if lit[0] == '"':
             if lit[-1] == '"':
                 return "(SString %s)" % lit
@@ -156,6 +156,7 @@ class operator(Node):
                   "==": "__eq__",
                   "-": "__sub__",
                   "|": ";",
+                  ":": "prepend",
                   }
         if result in lookup:
             return lookup[result]
@@ -262,6 +263,7 @@ class block(Node):
 class method(Node):
     def __init__(self, *args):
         Node.__init__(self, args)
+        
     def __repr__(self):
         return str(self.args[0][0])
 
@@ -365,6 +367,11 @@ class listsugar(Node):
 class mapsugar(Node):
     def __init__(self, *args):
         Node.__init__(self, args)
+        lst = self.args[0]
+        if len(lst) % 2 != 0:
+            self.error("Maps received an odd number of elements")
+    def __repr__(self):
+        return "(mapsugar $ SList (%s))"  % str(self.args[0])
 
 class module(Node):
     def __init__(self, *args):

@@ -1,0 +1,14 @@
+; -*- scheme -*-
+
+(module Main
+  (define func (x) return 0)
+  
+  ;tempmap = {("asdf" )}
+  
+  (define main IO ()
+    ! (print { ("key1" (+ 1 1))
+               ("key3" "asdff")
+               })
+    ;! (print tempmap)
+    ))
+  
